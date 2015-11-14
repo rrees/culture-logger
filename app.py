@@ -6,6 +6,7 @@ import webapp2
 import jinja2
 
 import queries
+import constants
 
 from google.appengine.api import users
 
@@ -45,6 +46,7 @@ class LogPlay(webapp2.RequestHandler):
 
 		template_values = {
 			"today": datetime.date.today().isoformat(),
+			"valid_ratings": constants.valid_ratings,
 		}
 
 		template = JINJA.get_template('log.html')
@@ -88,6 +90,7 @@ class LogPage(webapp2.RequestHandler):
 
 		template_values = {
 			"log": queries.read_log(user, log_id),
+			"valid_ratings": constants.valid_ratings,
 		}
 
 		template = JINJA.get_template('log.html')

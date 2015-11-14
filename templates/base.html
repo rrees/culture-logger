@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+	<title>{% block title %}{% endblock %} | Personal Richard</title>
+	
+	{% block head %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet' href="/static/css/">
+	{% endblock %}
+
+	{% include 'bootstrap.html' %}
+	</head>
+
+	<body>
+	{% block navigation %}
+	{% include 'panels/navigation.html' %}
+	{% endblock %}
+
+	{% block body %}
+	{% endblock %}
+
+	{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/webshim/1.15.7/polyfiller.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<script>
+	webshim.polyfill('forms-ext');
+	</script>
+	{% endblock %}
+
+	</body>
+</html>

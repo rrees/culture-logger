@@ -1,0 +1,17 @@
+
+<div class="container-fluid">
+{% for log in logged %}
+<section>
+	<header>
+		<h1>{{log.name}}<h1>
+	</header>
+	{% if log.notes %}
+	<p>{{log.notes}}</p>
+	{% endif %}
+	{% if log.tags %}
+	<p>{{log.tags|join(" ")}}</p>
+	{% endif %}
+	<p>{{log.date}}</p>
+</section>
+{% endfor %}
+</div>

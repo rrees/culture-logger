@@ -1,0 +1,35 @@
+application: culture-logger
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /api/.*
+  login: required
+  secure: always
+  script: api.app
+
+- url: /jobs/.*
+  script: jobs.app
+
+- url: /tasks/.*
+  script: tasks.app
+
+- url: /
+  script: app.app
+  secure: always
+
+- url: /.*
+  login: required
+  secure: always
+  script: app.app
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

@@ -36,6 +36,7 @@ class HomePage(webapp2.RequestHandler):
 		template_values = {
 			"today": datetime.date.today().isoformat(),
 			"logged": queries.period.last_thirty_days(user),
+			"valid_ratings": constants.valid_ratings,
 		}
 
 		template = JINJA.get_template('home.html')

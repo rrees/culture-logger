@@ -18,7 +18,7 @@
 	<select name="rating" class="form-control">
 		<option value=""></option>
 		{% for i in valid_ratings %}
-		<option value="{{i}}" {% if i == log.rating %}selected{% endif %}>{{i}}</option>
+		<option value="{{i}}" {% if log and log.rating and i == log.rating %}selected{% endif %}>{{i}}</option>
 		{% endfor %}
 	</select>
 </div>

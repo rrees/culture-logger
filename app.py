@@ -100,7 +100,7 @@ class LogPage(webapp2.RequestHandler):
 	def post(self, log_id):
 		user = users.get_current_user()
 
-		date_played = datetime.datetime.strptime(self.request.POST['date'], '%Y-%m-%d').date()
+		date_attended = datetime.datetime.strptime(self.request.POST['date'], '%Y-%m-%d').date()
 
 		tags = self.request.POST.get('tags', '').split(',')
 
@@ -113,7 +113,7 @@ class LogPage(webapp2.RequestHandler):
 		if rating:
 			rating = int(rating)
 
-		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes, log_id=log_id)
+		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id)
 
 		return webapp2.redirect('/log/'+log_id)
 

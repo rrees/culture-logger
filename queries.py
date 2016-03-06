@@ -45,7 +45,6 @@ def log(user, game_name, date_played, tags=None, notes=None, log_id=None):
 
 	return update_log(user, log_id, game_name, date_played, tags, notes)
 
-
 def all_played(user):
 	return models.LogEntry.query(models.LogEntry.user == user).order(-models.LogEntry.date_played)
 

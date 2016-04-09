@@ -39,6 +39,10 @@
 				{% if log.tags %}
 				<p>Tags: {{log.tags|join(", ")}}</p>
 				{% endif %}
+
+				{% if log.category %}
+				<p>Category: {{log.category}}</p>
+				{% endif %}
 			</td>
 		</tr>
 		{% endfor %}

@@ -65,13 +65,15 @@ class LogPlay(webapp2.RequestHandler):
 
 		notes = self.request.POST.get('notes', None)
 
+		category = self.request.POST.get('category', None)
+
 		rating = self.request.POST.get('rating', None)
 
 		rating = int(rating) if rating else None
 
 		logging.info(rating)
 
-		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes)
+		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes, category=category)
 		return webapp2.redirect('/home')
 
 class LogsPage(webapp2.RequestHandler):

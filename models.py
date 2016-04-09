@@ -10,3 +10,4 @@ class LogEntry(ndb.Model):
 	tags = ndb.StringProperty(repeated=True)
 	rating = ndb.IntegerProperty()
 	notes= ndb.TextProperty()
+	category = ndb.StringProperty()

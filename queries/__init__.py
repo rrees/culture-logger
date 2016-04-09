@@ -9,50 +9,56 @@ from google.appengine.ext import ndb
 import models
 
 def read_log(user, log_id):
-    return ndb.Key(urlsafe=log_id).get()
+	return ndb.Key(urlsafe=log_id).get()
 
-def create_new_log(user, name, date, tags=None, rating=None, notes=None):
-    log_entry = models.LogEntry(user=user, name=name, date=date)
+def create_new_log(user, name, date, tags=None, rating=None, notes=None, category=None):
+	log_entry = models.LogEntry(user=user, name=name, date=date)
 
-    if tags:
-        log_entry.tags = tags
+	if tags:
+		log_entry.tags = tags
 
-    if notes:
-        log_entry.notes = notes
+	if notes:
+		log_entry.notes = notes
 
-    if rating:
-        log_entry.rating = rating
+	if rating:
+		log_entry.rating = rating
 
-    log_entry.put()
-    return log_entry
+	if category:
+		log_entry.category = category
 
-def update_log(user, log_id, name, played, tags=None, rating=None, notes=None):
-    log_entry = read_log(user, log_id)
+	log_entry.put()
+	return log_entry
 
-    if game_name:
-        log_entry.name = name
+def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None):
+	log_entry = read_log(user, log_id)
 
-    if date_played:
-        log_entry.date = date
+	if game_name:
+		log_entry.name = name
 
-    if tags:
-        log_entry.tags = tags
+	if date_played:
+		log_entry.date_played = date
 
-    if notes:
-        log_entry.notes = notes
+	if tags:
+		log_entry.tags = tags
 
-    if rating:
-        log_entry.rating = rating
+	if rating:
+		log_entry.rating = rating
 
-    log_entry.put()
+	if notes:
+		log_entry.notes = notes
 
-    return log_entry
+	if category:
+		log_entry.category = category
 
-def log(user, name, date, tags=None, notes=None, rating=None, log_id=None):
-    if not log_id:
-        return create_new_log(user, name, date, tags, rating, notes)
+	log_entry.put()
 
-    return update_log(user, log_id, name, date, tags, rating, notes)
+	return log_entry
+
+def log(user, name, date, tags=None, rating=None, notes=None, log_id=None, category=None):
+	if not log_id:
+		return create_new_log(user, name, date, tags, rating, notes, category)
+
+	return update_log(user, log_id, name, date, tags, rating, notes, category)
 
 
 def all(user):

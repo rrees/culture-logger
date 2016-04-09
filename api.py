@@ -10,6 +10,7 @@ def log_to_json(log):
 		"name": log.name,
 		"date": log.date.isoformat(),
 		"tags": log.tags,
+		"category": log.category,
 		"rating": log.rating,
 		"notes": log.notes,
 	}

@@ -112,10 +112,12 @@ class LogPage(webapp2.RequestHandler):
 
 		rating = self.request.POST.get('rating', None)
 
+		category = self.request.POST.get('category', None)
+
 		if rating:
 			rating = int(rating)
 
-		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id)
+		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id, category=category)
 
 		return webapp2.redirect('/log/'+log_id)
 

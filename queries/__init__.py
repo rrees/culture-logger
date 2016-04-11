@@ -32,11 +32,11 @@ def create_new_log(user, name, date, tags=None, rating=None, notes=None, categor
 def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None):
 	log_entry = read_log(user, log_id)
 
-	if game_name:
+	if name:
 		log_entry.name = name
 
-	if date_played:
-		log_entry.date_played = date
+	if date:
+		log_entry.date = date
 
 	if tags:
 		log_entry.tags = tags

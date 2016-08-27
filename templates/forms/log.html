@@ -36,6 +36,12 @@
 </div>
 
 <div class="form-group">
+	<label for="category">URL</label>
+	<input type="text" name="url" id="url" class="form-control"
+		{% if log and log.url %}value="{{log.url}}"{% endif %}/>
+</div>
+
+<div class="form-group">
 	<label for="notes">Notes</label>
 	<textarea id="notes"name="notes" class="form-control" rows="3">{% if log and log.notes %}{{log.notes}}{% endif %}</textarea>
 </div>

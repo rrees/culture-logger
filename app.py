@@ -73,7 +73,11 @@ class LogPlay(webapp2.RequestHandler):
 
 		logging.info(rating)
 
-		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes, category=category)
+		url = self.request.POST.get('url', None)
+
+		logging.info(url)
+
+		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes, category=category, url=url)
 		return webapp2.redirect('/home')
 
 class LogsPage(webapp2.RequestHandler):
@@ -114,10 +118,12 @@ class LogPage(webapp2.RequestHandler):
 
 		category = self.request.POST.get('category', None)
 
+		url = self.request.POST.get('url', None)
+
 		if rating:
 			rating = int(rating)
 
-		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id, category=category)
+		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id, category=category, url=url)
 
 		return webapp2.redirect('/log/'+log_id)
 

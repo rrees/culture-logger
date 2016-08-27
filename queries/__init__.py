@@ -11,7 +11,7 @@ import models
 def read_log(user, log_id):
 	return ndb.Key(urlsafe=log_id).get()
 
-def create_new_log(user, name, date, tags=None, rating=None, notes=None, category=None):
+def create_new_log(user, name, date, tags=None, rating=None, notes=None, category=None, url=None):
 	log_entry = models.LogEntry(user=user, name=name, date=date)
 
 	if tags:
@@ -26,10 +26,13 @@ def create_new_log(user, name, date, tags=None, rating=None, notes=None, categor
 	if category:
 		log_entry.category = category
 
+	if url:
+		log_entry.url = url
+
 	log_entry.put()
 	return log_entry
 
-def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None):
+def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None, url=None):
 	log_entry = read_log(user, log_id)
 
 	if name:
@@ -50,15 +53,19 @@ def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, cat
 	if category:
 		log_entry.category = category
 
+	if url:
+		log_entry.url = url
+
+
 	log_entry.put()
 
 	return log_entry
 
-def log(user, name, date, tags=None, rating=None, notes=None, log_id=None, category=None):
+def log(user, name, date, tags=None, rating=None, notes=None, log_id=None, category=None, url=None):
 	if not log_id:
-		return create_new_log(user, name, date, tags, rating, notes, category)
+		return create_new_log(user, name, date, tags, rating, notes, category, url=url)
 
-	return update_log(user, log_id, name, date, tags, rating, notes, category)
+	return update_log(user, log_id, name, date, tags, rating, notes, category, url=url)
 
 
 def all(user):

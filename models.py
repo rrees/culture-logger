@@ -11,3 +11,4 @@ class LogEntry(ndb.Model):
 	rating = ndb.IntegerProperty()
 	notes= ndb.TextProperty()
 	category = ndb.StringProperty()
+	url = ndb.StringProperty()

@@ -11,6 +11,9 @@
 	{% if log.tags %}
 	<p>{{log.tags|join(" ")}}</p>
 	{% endif %}
+	{% if log.url %}
+	<p><a href="{{log.url}}">{{log.url}}</a></p>
+	{% endif %}
 	<p>{{log.date}}</p>
 </section>
 {% endfor %}

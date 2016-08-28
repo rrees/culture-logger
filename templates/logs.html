@@ -43,6 +43,10 @@
 				{% if log.category %}
 				<p>Category: {{log.category}}</p>
 				{% endif %}
+
+				{% if log.url %}
+				<p><a href="{{log.url}}">{{log.url}}</a></p>
+				{% endif %}
 			</td>
 		</tr>
 		{% endfor %}

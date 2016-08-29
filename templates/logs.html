@@ -27,7 +27,7 @@
 			<td>
 
 				{% if log.rating %}
-				{{log.rating}}
+				{{log.rating | stars}}
 				{% endif %}
 
 				{% if log.notes %}

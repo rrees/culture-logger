@@ -7,6 +7,7 @@ import jinja2
 
 import queries
 import constants
+import filters
 
 from google.appengine.api import users
 
@@ -14,6 +15,8 @@ JINJA = jinja2.Environment(
 	loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')),
 	extensions=['jinja2.ext.autoescape'],
 	autoescape=True)
+
+JINJA.filters.update(filters.custom_filters)
 
 class MainPage(webapp2.RequestHandler):
 	def get(self):

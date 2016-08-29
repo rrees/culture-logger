@@ -27,7 +27,7 @@
 			<td>
 
 				{% if log.rating %}
-				{{log.rating | stars}}
+				<div title="{{log.rating}} star">{{log.rating | stars}}</div>
 				{% endif %}
 
 				{% if log.notes %}

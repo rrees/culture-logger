@@ -1,0 +1,11 @@
+
+.log-summaries {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.log-summary {
+	max-width: 30rem;
+	min-width: 20rem;
+	margin-right: 5rem;
+}

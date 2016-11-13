@@ -42,6 +42,11 @@
 </div>
 
 <div class="form-group">
+	<label for="bechdel-test">Bechdel test</label>
+	<input type="radio" id="bechdel-test" name="bechdel_test" value="true">
+</div>
+
+<div class="form-group">
 	<label for="notes">Notes</label>
 	<textarea id="notes"name="notes" class="form-control" rows="3">{% if log and log.notes %}{{log.notes}}{% endif %}</textarea>
 </div>

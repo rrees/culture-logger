@@ -25,12 +25,14 @@
 		<tr>
 			<td>{{log.name}} <sup><a href="/log/{{log.key.urlsafe()}}">Edit</a></sup></td>
 			<td>{{log.date}}</td>
-			{% if log.rating %}
-			<td><span title="{{log.rating}} star">{{log.rating | stars}}</span></td>
-			{% endif %}
+			
+			<td>{% if log.rating %}<span title="{{log.rating}} star">{{log.rating | stars}}</span>{% endif %}</td>
+			
 			<td>
 
-
+				{% if log.bechdel_test %}
+				<p>Passes the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a></p>
+				{% endif %}
 
 				{% if log.notes %}
 				<div>

@@ -62,6 +62,9 @@ def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, cat
 	if bechdel_test:
 		log_entry.bechdel_test = bechdel_test
 
+	if log_entry.bechdel_test  == True and not bechdel_test:
+		log_entry.bechdel_test = False
+
 	log_entry.put()
 
 	return log_entry

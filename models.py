@@ -12,3 +12,4 @@ class LogEntry(ndb.Model):
 	notes= ndb.TextProperty()
 	category = ndb.StringProperty()
 	url = ndb.StringProperty()
+	bechdel_test = ndb.BooleanProperty()

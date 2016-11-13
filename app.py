@@ -8,6 +8,7 @@ import jinja2
 import queries
 import constants
 import filters
+import forms
 
 from google.appengine.api import users
 
@@ -74,13 +75,22 @@ class LogPlay(webapp2.RequestHandler):
 
 		rating = int(rating) if rating else None
 
-		logging.info(rating)
+		#logging.info(rating)
 
 		url = self.request.POST.get('url', None)
 
-		logging.info(url)
+		#logging.info(url)
 
-		queries.log(user, self.request.POST['name'], date_played, tags=tags, rating=rating, notes=notes, category=category, url=url)
+		bechdel_test = forms.bechdel_test(self.request.POST)
+
+		logging.info(bechdel_test)
+
+		queries.log(user, self.request.POST['name'], date_played, tags=tags,
+			rating=rating,
+			notes=notes,
+			category=category,
+			url=url,
+			bechdel_test=bechdel_test)
 		return webapp2.redirect('/home')
 
 class LogsPage(webapp2.RequestHandler):
@@ -126,7 +136,16 @@ class LogPage(webapp2.RequestHandler):
 		if rating:
 			rating = int(rating)
 
-		queries.log(user, self.request.POST['name'], date_attended, tags=tags, rating=rating, notes=notes, log_id=log_id, category=category, url=url)
+		bechdel_test = forms.bechdel_test(self.request.POST)
+
+		queries.log(user, self.request.POST['name'], date_attended,
+			tags=tags,
+			rating=rating,
+			notes=notes,
+			log_id=log_id,
+			category=category,
+			url=url,
+			bechdel_test=bechdel_test)
 
 		return webapp2.redirect('/log/'+log_id)
 

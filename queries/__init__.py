@@ -11,7 +11,7 @@ import models
 def read_log(user, log_id):
 	return ndb.Key(urlsafe=log_id).get()
 
-def create_new_log(user, name, date, tags=None, rating=None, notes=None, category=None, url=None):
+def create_new_log(user, name, date, tags=None, rating=None, notes=None, category=None, url=None, bechdel_test=None):
 	log_entry = models.LogEntry(user=user, name=name, date=date)
 
 	if tags:
@@ -29,10 +29,13 @@ def create_new_log(user, name, date, tags=None, rating=None, notes=None, categor
 	if url:
 		log_entry.url = url
 
+	if bechdel_test:
+		log_entry.bechdel_test = bechdel_test
+
 	log_entry.put()
 	return log_entry
 
-def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None, url=None):
+def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, category=None, url=None, bechdel_test=None):
 	log_entry = read_log(user, log_id)
 
 	if name:
@@ -56,16 +59,18 @@ def update_log(user, log_id, name, date, tags=None, rating=None, notes=None, cat
 	if url:
 		log_entry.url = url
 
+	if bechdel_test:
+		log_entry.bechdel_test = bechdel_test
 
 	log_entry.put()
 
 	return log_entry
 
-def log(user, name, date, tags=None, rating=None, notes=None, log_id=None, category=None, url=None):
+def log(user, name, date, tags=None, rating=None, notes=None, log_id=None, category=None, url=None, bechdel_test=None):
 	if not log_id:
-		return create_new_log(user, name, date, tags, rating, notes, category, url=url)
+		return create_new_log(user, name, date, tags, rating, notes, category, url=url, bechdel_test=bechdel_test)
 
-	return update_log(user, log_id, name, date, tags, rating, notes, category, url=url)
+	return update_log(user, log_id, name, date, tags, rating, notes, category, url=url, bechdel_test=bechdel_test)
 
 
 def all(user):

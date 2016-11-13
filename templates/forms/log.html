@@ -43,7 +43,7 @@
 
 <div class="form-group">
 	<label for="bechdel-test">Bechdel test</label>
-	<input type="radio" id="bechdel-test" name="bechdel_test" value="true">
+	<input type="checkbox" id="bechdel-test" name="bechdel_test" value="true" {% if log and log.bechdel_test %}checked{% endif %}>
 </div>
 
 <div class="form-group">

@@ -41,6 +41,7 @@ class HomePage(webapp2.RequestHandler):
 			"today": datetime.date.today().isoformat(),
 			"logged": queries.period.last_thirty_days(user),
 			"valid_ratings": constants.valid_ratings,
+			"categories": constants.categories,
 		}
 
 		template = JINJA.get_template('home.html')

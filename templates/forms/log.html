@@ -35,7 +35,7 @@
 	{% if categories %}
 	<select id="category" name="category" class="form-control">
 		{% for category in categories %}
-		<option>{{category}}</option>
+		<option {% if log and log.category and log.category == category %}selected{% endif %}>{{category}}</option>
 		{% endfor %}
 	</select>
 	{% endif %}

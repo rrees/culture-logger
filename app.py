@@ -47,7 +47,7 @@ class HomePage(webapp2.RequestHandler):
 		template = JINJA.get_template('home.html')
 		self.response.write(template.render(template_values))
 
-class LogPlay(webapp2.RequestHandler):
+class Log(webapp2.RequestHandler):
 	def get(self):
 
 		template_values = {
@@ -105,13 +105,14 @@ class LogsPage(webapp2.RequestHandler):
 		template = JINJA.get_template('logs.html')
 		self.response.write(template.render(template_values))
 
-class LogPage(webapp2.RequestHandler):
+class EditLogPage(webapp2.RequestHandler):
 	def get(self, log_id):
 		user = users.get_current_user()
 
 		template_values = {
 			"log": queries.read_log(user, log_id),
 			"valid_ratings": constants.valid_ratings,
+			"categories": constants.categories,
 		}
 
 		template = JINJA.get_template('log.html')
@@ -158,8 +159,8 @@ class DeleteLogPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 	webapp2.Route(r'/', handler=MainPage),
 	webapp2.Route(r'/home', handler=HomePage),
-	webapp2.Route(r'/log', handler=LogPlay),
+	webapp2.Route(r'/log', handler=Log),
 	webapp2.Route(r'/logs', handler=LogsPage),
-	webapp2.Route(r'/log/<log_id>', handler=LogPage),
+	webapp2.Route(r'/log/<log_id>', handler=EditLogPage),
 	webapp2.Route(r'/log/<log_id>/delete', handler=DeleteLogPage),
 	], debug=True)

@@ -9,5 +9,6 @@ categories = [
 	"Book",
 	"Music",
 	"Event",
+	"Restaurant",
 	"Other",
 ]

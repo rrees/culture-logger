@@ -84,14 +84,15 @@ class Log(webapp2.RequestHandler):
 
 		bechdel_test = forms.bechdel_test(self.request.POST)
 
-		logging.info(bechdel_test)
+		violence_against_women = forms.violence_against_women(self.request.POST)
 
 		queries.log(user, self.request.POST['name'], date_played, tags=tags,
 			rating=rating,
 			notes=notes,
 			category=category,
 			url=url,
-			bechdel_test=bechdel_test)
+			bechdel_test=bechdel_test,
+			violence_against_women=violence_against_women)
 		return webapp2.redirect('/home')
 
 class LogsPage(webapp2.RequestHandler):
@@ -140,6 +141,8 @@ class EditLogPage(webapp2.RequestHandler):
 
 		bechdel_test = forms.bechdel_test(self.request.POST)
 
+		violence_against_women = forms.violence_against_women(self.request.POST)
+
 		queries.log(user, self.request.POST['name'], date_attended,
 			tags=tags,
 			rating=rating,
@@ -147,7 +150,8 @@ class EditLogPage(webapp2.RequestHandler):
 			log_id=log_id,
 			category=category,
 			url=url,
-			bechdel_test=bechdel_test)
+			bechdel_test=bechdel_test,
+			violence_against_women=violence_against_women)
 
 		return webapp2.redirect('/log/'+log_id)
 

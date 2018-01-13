@@ -13,3 +13,4 @@ class LogEntry(ndb.Model):
 	category = ndb.StringProperty()
 	url = ndb.StringProperty()
 	bechdel_test = ndb.BooleanProperty()
+	violence_against_women = ndb.BooleanProperty()

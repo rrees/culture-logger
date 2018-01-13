@@ -58,6 +58,11 @@
 </div>
 
 <div class="form-group">
+	<label for="violence-against-women">Uses violence against women as a plot device?</label>
+	<input type="checkbox" id="violence-against-women" name="violence_against_women" value="true" {% if log and log.violence_against_women %}checked{% endif %}>
+</div>
+
+<div class="form-group">
 	<label for="notes">Notes</label>
 	<textarea id="notes"name="notes" class="form-control" rows="3">{% if log and log.notes %}{{log.notes}}{% endif %}</textarea>
 </div>

@@ -53,6 +53,7 @@ class Log(webapp2.RequestHandler):
 		template_values = {
 			"today": datetime.date.today().isoformat(),
 			"valid_ratings": constants.valid_ratings,
+			"categories": constants.categories,
 		}
 
 		template = JINJA.get_template('log.html')

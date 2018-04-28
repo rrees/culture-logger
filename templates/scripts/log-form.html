@@ -1,0 +1,19 @@
+<script>
+
+	const LogModel = function(initialCategory) {
+		this.category = ko.observable(initialCategory);
+
+		this.hasPlot = ko.pureComputed(() => {
+			const activitiesWithPlot = [
+				'Musical',
+				'Theatre',
+				'Book',
+				'Film',
+			];
+
+			return activitiesWithPlot.includes(this.category());
+		});
+	};
+
+	ko.applyBindings(new LogModel('Film'));
+</script>

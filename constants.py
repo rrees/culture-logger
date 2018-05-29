@@ -7,6 +7,7 @@ categories = [
 	"Musical",
 	"Exhibition",
 	"Book",
+	"Comics",
 	"Music",
 	"Event",
 	"Restaurant",

@@ -45,7 +45,7 @@
 				{% endif %}
 
 				{% if log.category %}
-				<p>Category: {{log.category}}</p>
+				<p>Category: <a href="/logs/category/{{log.category | lower}}">{{log.category}}</a></p>
 				{% endif %}
 
 				{% if log.url %}

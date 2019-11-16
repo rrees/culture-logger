@@ -1,6 +1,7 @@
 import os
 import logging
 import datetime
+import json
 
 import webapp2
 import jinja2
@@ -161,6 +162,12 @@ class DeleteLogPage(webapp2.RequestHandler):
 		queries.delete_log(log_id)
 		return webapp2.redirect('/logs')
 
+class ExportPage(webapp2.RequestHandler):
+	def get(self):
+		data = {}
+		self.response.headers['Content-Type'] = 'application/json'
+		self.response.write(json.dumps(data))
+
 app = webapp2.WSGIApplication([
 	webapp2.Route(r'/', handler=MainPage),
 	webapp2.Route(r'/home', handler=HomePage),
@@ -168,4 +175,5 @@ app = webapp2.WSGIApplication([
 	webapp2.Route(r'/logs', handler=LogsPage),
 	webapp2.Route(r'/log/<log_id>', handler=EditLogPage),
 	webapp2.Route(r'/log/<log_id>/delete', handler=DeleteLogPage),
+	webapp2.Route(r'/export', handler=ExportPage),
 	], debug=True)

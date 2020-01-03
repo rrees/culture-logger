@@ -1,3 +1,5 @@
+import datetime
+
 from pony import orm
 
 from . import db
@@ -11,6 +13,7 @@ class CultureLog(database.Entity):
 	title = orm.Required(str)
 	rating = orm.Optional(int)
 	category = orm.Optional(str)
+	event_date = orm.Required(datetime.date)
 
 
 database.generate_mapping()

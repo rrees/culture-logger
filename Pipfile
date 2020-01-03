@@ -7,12 +7,14 @@ verify_ssl = true
 sqlalchemy = "*"
 psycopg2 = "*"
 yoyo-migrations = "*"
+bpython = "*"
 
 [packages]
 gunicorn = "*"
 redis = "*"
 Flask = "*"
 Flask-SSLify = "*"
+pony = "*"
 
 [requires]
 python_version = "3.8"

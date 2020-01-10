@@ -14,6 +14,8 @@ class CultureLog(database.Entity):
 	rating = orm.Optional(int)
 	category = orm.Optional(str)
 	event_date = orm.Required(datetime.date)
+	content = orm.Optional(str)
+	tags = orm.Optional(orm.StrArray)
 
 
 database.generate_mapping()

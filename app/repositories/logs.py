@@ -4,12 +4,18 @@ from pony import orm
 
 from . import models
 
-def add_log(title, rating=None, category=None, event_date=None):
+def add(title, rating=None, category=None, event_date=None, content=None, tags=None):
 	if not category:
 		category = ''
 
+	if not content:
+		content = ''
+
+	if not tags:
+		tags = []
+
 	if not event_date:
-		event_date = datetime.date.utcnow()
+		event_date = datetime.date.today()
 
 	with orm.db_session:
 		log = models.CultureLog(
@@ -17,6 +23,8 @@ def add_log(title, rating=None, category=None, event_date=None):
 			event_date = event_date,
 			rating = rating,
 			category = category,
+			content=content,
+			tags=tags,
 			)
 		return log
 

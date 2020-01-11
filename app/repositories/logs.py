@@ -40,3 +40,7 @@ def update(id, **kwargs):
 				setattr(log, key, value)
 
 	return log
+
+def all():
+	with orm.db_session:
+		return models.CultureLog.select()

@@ -7,4 +7,4 @@ def front_page():
 
 def all_logs():
 	log_entries = logs.all()
-	return flask.render_template('index.html')
+	return flask.render_template('logs.html', logged=log_entries)

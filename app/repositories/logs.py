@@ -2,7 +2,7 @@ import datetime
 
 from pony import orm
 
-from . import models
+from . import mappers, models
 
 def add(title, rating=None, category=None, event_date=None, content=None, tags=None):
 	if not category:
@@ -43,4 +43,4 @@ def update(id, **kwargs):
 
 def all():
 	with orm.db_session:
-		return models.CultureLog.select()
+		return [mappers.log(l) for l in models.CultureLog.select()]

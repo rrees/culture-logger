@@ -7,6 +7,7 @@ from flask_sslify import SSLify
 
 from . import handlers
 from . import redis_utils
+from . import filters
 
 ENV = os.environ.get("ENV", "PROD")
 
@@ -29,6 +30,9 @@ routes = [
 
 for path, endpoint, handler, methods in routes:
 	app.add_url_rule(path, endpoint, handler, methods=methods)
+
+for filter_name, filter in filters.custom_filters.items():
+	app.add_template_filter(filter, name=filter_name)
 
 @app.errorhandler(500)
 def server_error(e):

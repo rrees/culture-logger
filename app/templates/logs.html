@@ -1,0 +1,61 @@
+{% extends 'default.html' %}
+
+{% block title %}Logs{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<header>
+<h1>Your events</h1>
+</header>
+</div>
+
+<div class="container-fluid">
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Date</th>
+			<th>Rating</th>
+			<th>Details</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for log in logged %}
+		<tr>
+			<td>{{log.title}} <sup><a href="/log/{{log.id}}">Edit</a></sup></td>
+			<td>{{log.event_date}}</td>
+			
+			<td>{% if log.rating %}<span title="{{log.rating}} star">{{log.rating | stars}}</span>{% endif %}</td>
+			
+			<td>
+
+				{% if log.bechdel_test %}
+				<p>Passes the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a></p>
+				{% endif %}
+
+				{% if log.content %}
+				<div>
+				{{log.content}}
+				</div>
+				{% endif %}
+
+				{% if log.tags %}
+				<p>Tags: {{log.tags|join(", ")}}</p>
+				{% endif %}
+
+				{% if log.category %}
+				<p>Category: <a href="/logs/category/{{log.category | lower}}">{{log.category}}</a></p>
+				{% endif %}
+
+				{% if log.url %}
+				<p><a href="{{log.url}}">{{log.url}}</a></p>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</div>
+
+{% endblock %}

@@ -26,6 +26,7 @@ logger = app.logger
 routes = [
 	('/', 'index', handlers.pages.front_page, ['GET']),
 	('/logs', 'logs', handlers.pages.all_logs, ['GET']),
+	('/logs/category/<category_name>', 'category_logs', handlers.pages.all_category_logs, ['GET']),
 ]
 
 for path, endpoint, handler, methods in routes:

@@ -13,6 +13,9 @@
 
     <body>
 		{% block navbar %}
+        <div class="container-fluid">
+        {% include 'navigation/navbar.html' %}
+        </div>
 		{% endblock %}
         {% block content %}
         {% endblock %}

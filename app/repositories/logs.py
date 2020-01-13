@@ -43,4 +43,11 @@ def update(id, **kwargs):
 
 def all():
 	with orm.db_session:
-		return [mappers.log(l) for l in models.CultureLog.select()]
+		return [mappers.log(l) for l in models.CultureLog.select().sort_by(orm.desc(models.CultureLog.event_date))]
+
+def category(category_name):
+	with orm.db_session:
+		return [
+			mappers.log(l)
+			for l
+			in models.CultureLog.select(lambda l: l.category.lower() == category_name).sort_by(orm.desc(models.CultureLog.event_date))]

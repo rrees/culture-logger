@@ -1,0 +1,12 @@
+{% extends 'default.html' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <h1>{{log_entry.title}}</h1>
+
+    {% if log_entry.content %}
+    <pre>{{ log_entry.content }}</pre>
+    {% endif %}
+</div>
+{% endblock %}

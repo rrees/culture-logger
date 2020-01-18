@@ -51,3 +51,7 @@ def category(category_name):
 			mappers.log(l)
 			for l
 			in models.CultureLog.select(lambda l: l.category.lower() == category_name).sort_by(orm.desc(models.CultureLog.event_date))]
+
+def log(log_id):
+	with orm.db_session:
+		return mappers.log(models.CultureLog[log_id])

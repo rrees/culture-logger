@@ -16,3 +16,8 @@ def all_category_logs(category_name):
 
 def log(log_id):
 	return flask.render_template('log.html', log_entry=logs.log(log_id))
+
+def create_log():
+	from app.data.categories import categories
+	from app.data.ratings import valid_ratings
+	return flask.render_template('logs/create.html', categories=categories, valid_ratings=valid_ratings)

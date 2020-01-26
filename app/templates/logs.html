@@ -22,7 +22,7 @@
 	<tbody>
 		{% for log in logged %}
 		<tr>
-			<td>{{log.title}} <sup><a href="/log/{{log.id}}">Edit</a></sup></td>
+			<td>{{log.title}} <sup><a href="{{url_for('log', /log/{{log.id}}">Edit</a></sup></td>
 			<td>{{log.event_date}}</td>
 			
 			<td>{% if log.rating %}<span title="{{log.rating}} star">{{log.rating | stars}}</span>{% endif %}</td>

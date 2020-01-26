@@ -28,6 +28,7 @@ routes = [
 	('/logs', 'logs', handlers.pages.all_logs, ['GET']),
 	('/logs/category/<category_name>', 'category_logs', handlers.pages.all_category_logs, ['GET']),
 	('/log/<log_id>', 'log', handlers.pages.log, ['GET']),
+	('/log/create', 'create_log', handlers.pages.create_log, ['GET']),
 ]
 
 for path, endpoint, handler, methods in routes:

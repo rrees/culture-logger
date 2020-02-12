@@ -18,6 +18,9 @@ class CultureLog(database.Entity):
 	event_date = orm.Required(datetime.date)
 	content = orm.Optional(str)
 	tags = orm.Optional(orm.StrArray)
+	url = orm.Optional(str)
+	bechdel_test = orm.Optional(bool)
+	violence_against_women =orm.Optional(bool)
 
 
 @dataclass

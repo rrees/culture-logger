@@ -4,7 +4,9 @@ from pony import orm
 
 from . import mappers, models
 
-def add(title, rating=None, category=None, event_date=None, content=None, tags=None):
+def add(title, rating=None, category=None, event_date=None, content=None, tags=None, url=None,
+	bechdel_test=None,
+	violence_against_women=None):
 	if not category:
 		category = ''
 
@@ -25,6 +27,9 @@ def add(title, rating=None, category=None, event_date=None, content=None, tags=N
 			category = category,
 			content=content,
 			tags=tags,
+			url=url,
+			bechdel_test=bechdel_test,
+			violence_against_women=violence_against_women,
 			)
 		return log
 

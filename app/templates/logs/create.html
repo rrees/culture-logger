@@ -6,6 +6,10 @@
 <div class="container-fluid">
     <h1>Create new log</h1>
 
+
+	<form method="POST" action="{{url_for('forms_log_create')}}">
     {% include 'logs/form.html' %}
+	</form>
+
 </div>
 {% endblock %}

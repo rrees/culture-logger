@@ -32,5 +32,6 @@ class LogRecord:
 	event_date: datetime.date
 	content: str
 	tags: List[str]
+	bechdel_test: bool
 
 database.generate_mapping()

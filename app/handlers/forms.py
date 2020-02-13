@@ -13,3 +13,6 @@ def create_log():
 	new_log = logs.add(flask.request.form['name'], **data)
 
 	return flask.redirect(flask.url_for('log', log_id=new_log.id))
+
+def delete_log():
+	return flask.redirect(flask.url_for('home'))

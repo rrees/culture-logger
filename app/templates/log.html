@@ -6,8 +6,19 @@
 <div class="container-fluid">
     <h1>{{log_entry.title}}</h1>
 
+    <p><a href="{{url_for('log_delete', log_id=log_entry.id)}}">Delete</a></p>
+
     {% if log_entry.content %}
     <pre>{{ log_entry.content }}</pre>
     {% endif %}
+
+    {% if log_entry.category %}
+    <p>{{log_entry.category}}</p>
+    {% endif %}
+
+    {% if log_entry.bechdel_test %}
+    <p>Passes the Bechdel Test</p>
+    {% endif %}
+    <p>
 </div>
 {% endblock %}

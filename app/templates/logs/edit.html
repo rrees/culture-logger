@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+
+{% block title %}{{log.title}}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>{{log.title}}</h1>
+
+    <p>
+        <a href="{{url_for('log_delete', log_id=log.id)}}">Delete</a>
+
+    </p>
+
+    <form method="POST">
+    {% include 'logs/form.html' %}
+    </form>
+</div>
+{% endblock %}

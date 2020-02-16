@@ -29,6 +29,7 @@ routes = [
 	('/logs', 'logs', handlers.pages.all_logs, ['GET']),
 	('/logs/category/<category_name>', 'category_logs', handlers.pages.all_category_logs, ['GET']),
 	('/log/<log_id>', 'log', handlers.pages.log, ['GET']),
+	('/log/<log_id>/edit', 'log_edit', handlers.pages.edit_log, ['GET']),
 	('/log/create', 'log_create', handlers.pages.create_log, ['GET']),
 	('/forms/logs/create', 'forms_log_create', handlers.forms.create_log, ['POST']),
 	('/log/<log_id>/delete', 'log_delete', handlers.pages.delete_log, ['GET']),

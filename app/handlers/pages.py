@@ -1,5 +1,8 @@
 import flask
 
+from app.data.categories import categories
+from app.data.ratings import valid_ratings
+
 from app.repositories import logs
 
 def front_page():
@@ -20,9 +23,13 @@ def all_category_logs(category_name):
 def log(log_id):
 	return flask.render_template('log.html', log_entry=logs.log(log_id))
 
+def edit_log(log_id):
+	return flask.render_template('logs/edit.html', log=logs.log(log_id),
+		categories=categories,
+		valid_ratings=valid_ratings)
+
 def create_log():
-	from app.data.categories import categories
-	from app.data.ratings import valid_ratings
+
 	return flask.render_template('logs/create.html', categories=categories, valid_ratings=valid_ratings)
 
 def delete_log(log_id):

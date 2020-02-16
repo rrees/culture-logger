@@ -2,13 +2,13 @@
 <div class="form-group">
 	<label for="name">Event name</label>
 	<input type="text" name="name" id="name" class="form-control" required
-		{% if log and log.name %}value="{{log.name}}"{% endif %}/>
+		{% if log and log.title %}value="{{log.title}}"{% endif %}/>
 </div>
 
 <div class="form-group">
 	<label for="event_date">Date</label>
 	<input type="date" name="event_date" id="event_date" class="form-control" required
-		{% if log and log.date %}value="{{log.date}}"{% endif %}
+		{% if log and log.event_date %}value="{{log.event_date}}"{% endif %}
 		{% if not log and today %}value="{{today}}"{% endif %}/>
 </div>
 
@@ -17,7 +17,11 @@
 	<select name="rating" class="form-control">
 		<option value=""></option>
 		{% for i in valid_ratings %}
-		<option value="{{i}}" {% if log and log.rating and i == log.rating %}selected{% endif %}>{{i}}</option>
+		<option
+			value="{{i}}"
+			{% if log and log.rating and i == log.rating %}selected{% endif %}>
+			{{i}}
+		</option>
 		{% endfor %}
 	</select>
 </div>

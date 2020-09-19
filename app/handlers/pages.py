@@ -1,3 +1,5 @@
+import datetime
+
 import flask
 
 from app.data.categories import categories
@@ -29,8 +31,11 @@ def edit_log(log_id):
 		valid_ratings=valid_ratings)
 
 def create_log():
-
-	return flask.render_template('logs/create.html', categories=categories, valid_ratings=valid_ratings)
+	return flask.render_template('logs/create.html',
+		categories=categories,
+		valid_ratings=valid_ratings,
+		today=datetime.date.today().isoformat()
+		)
 
 def delete_log(log_id):
 	return flask.render_template('logs/delete.html', log_entry=logs.log(log_id))

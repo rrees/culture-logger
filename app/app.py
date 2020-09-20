@@ -9,6 +9,8 @@ from . import handlers
 from . import redis_utils
 from . import filters
 
+from .auth_password.routes import auth_routes 
+
 ENV = os.environ.get("ENV", "PROD")
 
 redis_url = os.environ.get("REDIS_URL", None)
@@ -36,6 +38,8 @@ routes = [
 	('/forms/logs/delete', 'forms_log_delete', handlers.forms.delete_log, ['POST']),
 ]
 
+routes.extend(auth_routes)
+
 for path, endpoint, handler, methods in routes:
 	app.add_url_rule(path, endpoint, handler, methods=methods)
 
@@ -47,3 +51,8 @@ def server_error(e):
     # Log the error and stacktrace.
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
+
+@app.before_request
+def check_authentication():
+	if 'email' not in flask.session and flask.request.endpoint not in ['index', 'login_form']:
+		return flask.redirect(flask.url_for('index'))

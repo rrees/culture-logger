@@ -15,6 +15,7 @@ redis = "*"
 Flask = "*"
 Flask-SSLify = "*"
 pony = "*"
+wtforms = "*"
 
 [requires]
 python_version = "3.8"

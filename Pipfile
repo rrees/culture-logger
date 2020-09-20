@@ -16,6 +16,7 @@ Flask = "*"
 Flask-SSLify = "*"
 pony = "*"
 wtforms = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"

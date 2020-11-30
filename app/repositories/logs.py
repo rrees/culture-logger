@@ -16,6 +16,9 @@ def add(title, rating=None, category=None, event_date=None, content=None, tags=N
 	if not tags:
 		tags = []
 
+	if not rating.strip():
+		rating = None
+
 	if not event_date:
 		event_date = datetime.date.today()
 

@@ -15,3 +15,7 @@ def create_log():
 
 def delete_log():
 	return flask.redirect(flask.url_for('home'))
+
+def edit_log():
+	log_id = flask.request.form['log_id']
+	return flask.redirect(flask.url_for('log', log_id=log_id))

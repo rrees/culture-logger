@@ -74,4 +74,8 @@
 <button type="submit" class="btn btn-primary">Log</button>
 </div>
 
+{% if log %}
+<input type="hidden" name="log_id" value="{{log.id}}">
+{% endif %}
+
 </form>

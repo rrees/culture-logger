@@ -17,7 +17,7 @@
     {% endif %}
 
     {% if log_entry.content %}
-    <pre>{{ log_entry.content }}</pre>
+    {{ log_entry.content | markdown | safe}}
     {% endif %}
 
     {% if log_entry.category %}

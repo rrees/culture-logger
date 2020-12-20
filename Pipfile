@@ -17,6 +17,7 @@ Flask-SSLify = "*"
 pony = "*"
 wtforms = "*"
 psycopg2 = "*"
+markdown-it-py = "*"
 
 [requires]
 python_version = "3.8"

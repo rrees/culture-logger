@@ -1,3 +1,4 @@
+from markdown_it import MarkdownIt
 
 rating_map = {
 	1: u'\u2605',
@@ -10,6 +11,12 @@ rating_map = {
 def stars(rating):
 	return rating_map.get(rating, '')
 
+md = MarkdownIt()
+
+def markdown(content):
+	return md.render(content)
+
 custom_filters = {
 	'stars': stars,
+	'markdown': markdown,
 }

@@ -33,5 +33,6 @@ class LogRecord:
 	content: str
 	tags: List[str]
 	bechdel_test: bool
+	url: str
 
 database.generate_mapping()

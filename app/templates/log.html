@@ -16,9 +16,6 @@
     <p><span title="{{log_entry.rating}} star rating">{{log_entry.rating | stars}}</span></p>
     {% endif %}
 
-    {% if log_entry.content %}
-    {{ log_entry.content | markdown | safe}}
-    {% endif %}
 
     {% if log_entry.category %}
     <p>{{log_entry.category}}</p>
@@ -27,6 +24,14 @@
     {% if log_entry.bechdel_test %}
     <p>Passes the Bechdel Test</p>
     {% endif %}
-    <p>
+    
+    {% if log_entry.content %}
+    {{ log_entry.content | markdown | safe}}
+    {% endif %}
+
+    {% if log_entry.url %}
+    <p>URL: <a href="{{log_entry.url}}">{{log_entry.url}}</a></p>
+    {% endif %}
+
 </div>
 {% endblock %}

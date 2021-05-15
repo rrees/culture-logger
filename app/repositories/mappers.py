@@ -10,5 +10,6 @@ def log(a_log: models.CultureLog) -> models.LogRecord:
 		tags=a_log.tags,
 		event_date=a_log.event_date,
 		bechdel_test=a_log.bechdel_test,
+		url=a_log.url,
 	)
 

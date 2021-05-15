@@ -14,7 +14,7 @@ def stars(rating):
 md = MarkdownIt()
 
 def markdown(content):
-	return md.render(content)
+	return md.render(content.replace('\r\n', '\n'))
 
 custom_filters = {
 	'stars': stars,

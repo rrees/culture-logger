@@ -1,12 +1,16 @@
 {% extends 'default.html' %}
 
-{% block title %}All Logs{% endblock %}
+{% block title %}{% if category_name %}{{category_name | capitalize}} | {% endif %}All Logs{% endblock %}
 
 {% block content %}
 
 <div class="container-fluid">
 <header>
-<h1>Your events</h1>
+{% if category_name %}
+<h1>Logs for {{category_name}}</h1>
+{% else %}
+<h1>Your logged events</h1>
+{% endif %}
 </header>
 
 <table class="table">

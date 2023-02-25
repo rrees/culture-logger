@@ -5,7 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 sqlalchemy = "*"
-psycopg2 = "*"
 yoyo-migrations = "*"
 bpython = "*"
 

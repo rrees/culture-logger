@@ -1,5 +1,6 @@
 categories = (
     "Film",
+    "Television",
     "Theatre",
     "Musical",
     "Exhibition",
@@ -9,6 +10,8 @@ categories = (
     "Music",
     "Event",
     "Restaurant",
+    "Spa",
+    "Cocktails",
     "Mealkit",
     "Other",
 )

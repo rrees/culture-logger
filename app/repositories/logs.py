@@ -17,10 +17,10 @@ def add(
     violence_against_women=None,
 ):
     if not category:
-        category = ''
+        category = ""
 
     if not content:
-        content = ''
+        content = ""
 
     if not tags:
         tags = []
@@ -47,7 +47,6 @@ def add(
 
 
 def update(id, **kwargs):
-
     with orm.db_session:
         log = models.CultureLog[id]
 
@@ -70,11 +69,14 @@ def all():
 
 def category(category_name):
     with orm.db_session:
+        query = models.CultureLog.select().sort_by(
+            orm.desc(models.CultureLog.event_date)
+        )
+
         return [
             mappers.log(l)
-            for l in models.CultureLog.select(
-                lambda l: l.category.lower() == category_name
-            ).sort_by(orm.desc(models.CultureLog.event_date))
+            for l in query
+            if l.category and l.category.lower() == category_name
         ]
 
 

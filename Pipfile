@@ -17,6 +17,7 @@ pony = "*"
 wtforms = "*"
 psycopg2-binary = "*"
 mistune = "*"
+psycopg = {extras = ["binary"], version = "*"}
 
 [requires]
 python_version = "3.11"

@@ -1,8 +1,10 @@
 import datetime
 
+import psycopg
+
 from pony import orm
 
-from . import mappers, models
+from . import db, mappers, models, sql
 
 
 def add(
@@ -83,3 +85,20 @@ def category(category_name):
 def log(log_id):
     with orm.db_session:
         return mappers.log(models.CultureLog[log_id])
+
+
+def run_query(query, data, data_class):
+    with db.pg_connect() as conn:
+        with conn.cursor(row_factory=psycopg.rows.class_row(data_class)) as cursor:
+            cursor.execute(query, data)
+            rows = cursor.fetchall()
+            return [row for row in rows]
+
+
+def all():
+    return run_query(sql.logs.ALL, {}, models.LogRecord)
+
+
+def category(category_name):
+    params = {"category": category_name.lower()}
+    return run_query(sql.logs.ALL_FROM_CATEGORY, params, models.LogRecord)

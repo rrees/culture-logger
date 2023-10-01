@@ -102,3 +102,14 @@ def all():
 def category(category_name):
     params = {"category": category_name.lower()}
     return run_query(sql.logs.ALL_FROM_CATEGORY, params, models.LogRecord)
+
+
+def log(log_id):
+    params = {"log_id": log_id}
+
+    with db.pg_connect() as conn:
+        with conn.cursor(
+            row_factory=psycopg.rows.class_row(models.LogRecord)
+        ) as cursor:
+            cursor.execute(sql.logs.LOG, params)
+            return cursor.fetchone()

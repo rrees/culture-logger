@@ -7,3 +7,8 @@ ALL_FROM_CATEGORY = """SELECT *
 FROM culture_log
 WHERE LOWER(category) = %(category)s
 ORDER BY event_date DESC"""
+
+LOG = """SELECT *
+FROM culture_log
+WHERE id = %(log_id)s
+"""

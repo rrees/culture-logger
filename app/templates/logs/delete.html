@@ -8,6 +8,7 @@
 
 
 	<form method="POST" action="{{url_for('forms_log_delete')}}">
+		<input type="hidden" name="log_id" value="{{log_entry.id}}">
 		<button type="submit" class="btn btn-danger">Confirm deletion</button>
 	</form>
 

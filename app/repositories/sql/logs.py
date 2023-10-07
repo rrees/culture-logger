@@ -12,3 +12,26 @@ LOG = """SELECT *
 FROM culture_log
 WHERE id = %(log_id)s
 """
+
+DELETE = """DELETE FROM culture_log
+WHERE id = %(log_id)s"""
+
+CREATE = """INSERT INTO culture_log (
+	title,
+	content,
+	tags,
+	category,
+	rating,
+	url,
+	bechdel_test,
+	violence_against_women
+) VALUES (
+	%(title)s,
+	%(content)s,
+	%(tags)s,
+	%(category)s,
+	%(rating)s,
+	%(url)s,
+	%(bechdel_test)s,
+	%(violence_against_women)s
+) RETURNING id"""

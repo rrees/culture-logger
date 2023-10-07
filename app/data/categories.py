@@ -13,5 +13,6 @@ categories = (
     "Spa",
     "Cocktails",
     "Mealkit",
+    "Opera",
     "Other",
 )

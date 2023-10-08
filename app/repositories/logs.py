@@ -2,9 +2,14 @@ import datetime
 
 import psycopg
 
-from pony import orm
-
 from . import db, mappers, models, sql
+
+
+def process_tags(tag_value: str) -> list[str]:
+    if not tag_value:
+        return []
+
+    return [t.strip() for t in tag_value.lower().split(",")]
 
 
 def add(
@@ -24,10 +29,7 @@ def add(
     if not content:
         content = ""
 
-    if tags:
-        tags = [t.strip() for t in tags.split(",")]
-    if not tags:
-        tags = []
+    tags = process_tags(tags)
 
     if not rating.strip():
         rating = None
@@ -55,14 +57,20 @@ def add(
 
 
 def update(id, **kwargs):
-    with orm.db_session:
-        log = models.CultureLog[id]
+    params = dict(kwargs)
 
-        for key, value in kwargs.items():
-            if hasattr(log, key):
-                setattr(log, key, value)
+    params["tags"] = process_tags(params["tags"])
 
-    return log
+    column_names = [n for n in kwargs.keys() if n != "log_id"]
+
+    with db.pg_connect() as conn:
+        with conn.cursor() as cursor:
+            with conn.transaction():
+                update = db.format_placeholders(sql.logs.UPDATE, column_names)
+
+                cursor.execute(update, params)
+
+    return id
 
 
 def read(query, data, data_class, read_one=False):

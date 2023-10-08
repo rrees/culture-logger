@@ -35,3 +35,8 @@ CREATE = """INSERT INTO culture_log (
 	%(bechdel_test)s,
 	%(violence_against_women)s
 ) RETURNING id"""
+
+UPDATE = """UPDATE culture_log
+SET ({}) = ({})
+WHERE id = %(log_id)s
+RETURNING id"""

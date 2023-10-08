@@ -14,5 +14,6 @@ categories = (
     "Cocktails",
     "Mealkit",
     "Opera",
+    "Comedy",
     "Other",
 )

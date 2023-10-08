@@ -19,6 +19,7 @@
 			<th>Name</th>
 			<th>Date</th>
 			<th>Rating</th>
+			<th>Category</th>
 			<th>Details</th>
 		</tr>
 	</thead>
@@ -32,13 +33,14 @@
 			<td>{% if log.rating %}<span title="{{log.rating}} star">{{log.rating | stars}}</span>{% endif %}</td>
 			
 			<td>
-
-				{% if log.bechdel_test %}
-				<p>Passes the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a></p>
+				{% if log.category %}
+				<a href="/logs/category/{{log.category | lower}}">{{log.category}}</a>
 				{% endif %}
+			</td>
+			<td>
 
 				{% if log.content %}
-				<div>
+				<div class="mb-2">
 				{{log.content}}
 				</div>
 				{% endif %}
@@ -47,10 +49,12 @@
 				<p>Tags: {{log.tags|join(", ")}}</p>
 				{% endif %}
 
-				{% if log.category %}
-				<p>Category: <a href="/logs/category/{{log.category | lower}}">{{log.category}}</a></p>
+				
+				{% if log.bechdel_test %}
+				<p>Passes the <a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel test</a></p>
 				{% endif %}
 
+				
 				{% if log.url %}
 				<p><a href="{{log.url}}">{{log.url}}</a></p>
 				{% endif %}

@@ -2,7 +2,7 @@ import datetime
 
 import psycopg
 
-from . import db, mappers, models, sql
+from . import db, models, sql
 
 
 def process_tags(tag_value: str) -> list[str]:
@@ -49,7 +49,7 @@ def add(
         violence_against_women=violence_against_women,
     )
 
-    with db.pg_connect() as conn:
+    with db.connect() as conn:
         with conn.cursor() as cursor:
             with conn.transaction():
                 result = cursor.execute(sql.logs.CREATE, data)
@@ -63,7 +63,7 @@ def update(id, **kwargs):
 
     column_names = [n for n in kwargs.keys() if n != "log_id"]
 
-    with db.pg_connect() as conn:
+    with db.connect() as conn:
         with conn.cursor() as cursor:
             with conn.transaction():
                 update = db.format_placeholders(sql.logs.UPDATE, column_names)
@@ -74,7 +74,7 @@ def update(id, **kwargs):
 
 
 def read(query, data, data_class, read_one=False):
-    with db.pg_connect() as conn:
+    with db.connect() as conn:
         with conn.cursor(row_factory=psycopg.rows.class_row(data_class)) as cursor:
             cursor.execute(query, data)
             if read_one:
@@ -100,7 +100,7 @@ def log(log_id):
 
 
 def delete(log_id):
-    with db.pg_connect() as conn:
+    with db.connect() as conn:
         with conn.cursor() as cursor:
             with conn.transaction():
                 cursor.execute(sql.logs.DELETE, {"log_id": log_id})

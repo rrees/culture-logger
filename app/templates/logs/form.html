@@ -9,7 +9,8 @@
 	<label for="event_date">Date</label>
 	<input type="date" name="event_date" id="event_date" class="form-control" required
 		{% if log and log.event_date %}value="{{log.event_date}}"{% endif %}
-		{% if not log and today %}value="{{today}}"{% endif %}/>
+		{% if today %}value="{{today}}" max="{{today}}"{% endif %}
+		/>
 </div>
 
 <div class="form-group">

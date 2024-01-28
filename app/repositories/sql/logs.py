@@ -22,6 +22,7 @@ CREATE = """INSERT INTO culture_log (
 	tags,
 	category,
 	rating,
+	event_date,
 	url,
 	bechdel_test,
 	violence_against_women
@@ -31,6 +32,7 @@ CREATE = """INSERT INTO culture_log (
 	%(tags)s,
 	%(category)s,
 	%(rating)s,
+	%(event_date)s,
 	%(url)s,
 	%(bechdel_test)s,
 	%(violence_against_women)s

@@ -16,6 +16,10 @@
     <p><span title="{{log_entry.rating}} star rating">{{log_entry.rating | stars}}</span></p>
     {% endif %}
 
+    {% if log_entry.event_date %}
+    <p>{{log_entry.event_date}}</p>
+    {% endif %}
+
 
     {% if log_entry.category %}
     <p><a href="{{url_for('category_logs', category_name=log_entry.category)}}">{{log_entry.category}}</a></p>

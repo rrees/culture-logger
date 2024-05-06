@@ -3,7 +3,6 @@
 {% block title %}{{log_entry.title}}{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
     <h1>{{log_entry.title}}</h1>
 
     <p>
@@ -36,6 +35,4 @@
     {% if log_entry.url %}
     <p>URL: <a href="{{log_entry.url}}">{{log_entry.url}}</a></p>
     {% endif %}
-
-</div>
 {% endblock %}

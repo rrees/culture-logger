@@ -1,20 +1,20 @@
 
-<div class="form-group">
-	<label for="title">Event name</label>
+<div class="mb-3">
+	<label for="title" class="form-label" >Event name</label>
 	<input type="text" name="title" id="title" class="form-control" required
 		{% if log and log.title %}value="{{log.title}}"{% endif %}/>
 </div>
 
-<div class="form-group">
-	<label for="event_date">Date</label>
+<div class="mb-3">
+	<label for="event_date" class="form-label" >Date</label>
 	<input type="date" name="event_date" id="event_date" class="form-control" required
 		{% if log and log.event_date %}value="{{log.event_date}}"{% endif %}
 		{% if today %}value="{{today}}" max="{{today}}"{% endif %}
 		/>
 </div>
 
-<div class="form-group">
-	<label for="rating">Stars</label>
+<div class="mb-3">
+	<label for="rating" class="form-label">Stars</label>
 	<select name="rating" class="form-control">
 		<option value=""></option>
 		{% for i in valid_ratings %}
@@ -27,17 +27,18 @@
 	</select>
 </div>
 
-<div class="form-group">
-	<label for="tags">Tags</label>
+<div class="mb-3">
+	<label for="tags" class="form-label">Tags</label>
 	<input type="text" name="tags" id="tags" class="form-control"
 		{% if log and log.tags %}value="{{log.tags | join(" ")}}"{% endif %}/>
 </div>
 
-<div class="form-group">
-	<label for="category">Category</label>
+<div class="mb-3">
+	<label for="category" class="form-label">Category</label>
 
 	{% if categories %}
-	<select id="category" name="category" class="form-control" data-bind="value: category">
+	<select id="category" name="category" class="form-control"
+		x-model="category">
 		{% for category in categories %}
 		<option {% if log and log.category and log.category == category %}selected{% endif %}>{{category}}</option>
 		{% endfor %}
@@ -50,28 +51,31 @@
 	{% endif %}
 </div>
 
-<div class="form-group">
-	<label for="category">URL</label>
+<div class="mb-3">
+	<label for="category" class="form-label">URL</label>
 	<input type="text" name="url" id="url" class="form-control"
 		{% if log and log.url %}value="{{log.url}}"{% endif %}/>
 </div>
 
-<div class="form-group" data-bind="visible: category() === 'Film'">
-	<label for="bechdel-test">Bechdel test</label>
+<div class="mb-3"
+	x-show="category === 'Film'">
+	<label for="bechdel-test" class="form-label me-3">Bechdel test</label>
 	<input type="checkbox" id="bechdel-test" name="bechdel_test" value="true" {% if log and log.bechdel_test %}checked{% endif %}>
 </div>
 
-<div class="form-group" data-bind="visible: hasPlot()">
-	<label for="violence-against-women">Uses violence against women as a plot device?</label>
+<div class="mb-3"
+	x-show="category === 'Film'"
+	>
+	<label for="violence-against-women" class="form-label me-3">Uses violence against women as a plot device?</label>
 	<input type="checkbox" id="violence-against-women" name="violence_against_women" value="true" {% if log and log.violence_against_women %}checked{% endif %}>
 </div>
 
-<div class="form-group">
-	<label for="content">Notes</label>
+<div class="mb-3">
+	<label for="content" class="form-label">Notes</label>
 	<textarea id="content" name="content" class="form-control" rows="3">{% if log and log.content %}{{log.content}}{% endif %}</textarea>
 </div>
 
-<div class="form-group">
+<div class="mb-3">
 <button type="submit" class="btn btn-primary">Log</button>
 </div>
 
@@ -79,4 +83,3 @@
 <input type="hidden" name="log_id" value="{{log.id}}">
 {% endif %}
 
-</form>

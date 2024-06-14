@@ -23,7 +23,7 @@ app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))
 app.config.update(
     SESSION_COOKIE_SECURE=True,
     SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SAMESITE='Strict',
+    SESSION_COOKIE_SAMESITE="Strict",
 )
 
 if not ENV == "DEV":
@@ -32,22 +32,23 @@ if not ENV == "DEV":
 logger = app.logger
 
 routes = [
-    ('/', 'index', handlers.pages.front_page, ['GET']),
-    ('/home', 'home', handlers.pages.home_page, ['GET']),
-    ('/logs', 'logs', handlers.pages.all_logs, ['GET']),
+    ("/", "index", handlers.pages.front_page, ["GET"]),
+    ("/home", "home", handlers.pages.home_page, ["GET"]),
+    ("/logs", "logs", handlers.pages.all_logs, ["GET"]),
     (
-        '/logs/category/<category_name>',
-        'category_logs',
+        "/logs/category/<category_name>",
+        "category_logs",
         handlers.pages.all_category_logs,
-        ['GET'],
+        ["GET"],
     ),
-    ('/log/<log_id>', 'log', handlers.pages.log, ['GET']),
-    ('/log/<log_id>/edit', 'log_edit', handlers.pages.edit_log, ['GET']),
-    ('/forms/logs/edit', 'forms_log_edit', handlers.forms.edit_log, ['POST']),
-    ('/log/create', 'log_create', handlers.pages.create_log, ['GET']),
-    ('/forms/logs/create', 'forms_log_create', handlers.forms.create_log, ['POST']),
-    ('/log/<log_id>/delete', 'log_delete', handlers.pages.delete_log, ['GET']),
-    ('/forms/logs/delete', 'forms_log_delete', handlers.forms.delete_log, ['POST']),
+    ("/log/<log_id>", "log", handlers.pages.log, ["GET"]),
+    ("/log/<log_id>/edit", "log_edit", handlers.pages.edit_log, ["GET"]),
+    ("/forms/logs/edit", "forms_log_edit", handlers.forms.edit_log, ["POST"]),
+    ("/log/create", "log_create", handlers.pages.create_log, ["GET"]),
+    ("/forms/logs/create", "forms_log_create", handlers.forms.create_log, ["POST"]),
+    ("/log/<log_id>/delete", "log_delete", handlers.pages.delete_log, ["GET"]),
+    ("/forms/logs/delete", "forms_log_delete", handlers.forms.delete_log, ["POST"]),
+    ("/import", "import", handlers.migrations.import_logs, ["GET"]),
 ]
 
 routes.extend(auth_routes)
@@ -62,14 +63,14 @@ for filter_name, filter in filters.custom_filters.items():
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
-    logging.exception('An error occurred during a request.')
-    return 'An internal error occurred.', 500
+    logging.exception("An error occurred during a request.")
+    return "An internal error occurred.", 500
 
 
 @app.before_request
 def check_authentication():
-    if 'email' not in flask.session and flask.request.endpoint not in [
-        'index',
-        'login_form',
+    if "email" not in flask.session and flask.request.endpoint not in [
+        "index",
+        "login_form",
     ]:
-        return flask.redirect(flask.url_for('index'))
+        return flask.redirect(flask.url_for("index"))

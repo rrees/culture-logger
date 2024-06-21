@@ -48,10 +48,14 @@ routes = [
     ("/forms/logs/create", "forms_log_create", handlers.forms.create_log, ["POST"]),
     ("/log/<log_id>/delete", "log_delete", handlers.pages.delete_log, ["GET"]),
     ("/forms/logs/delete", "forms_log_delete", handlers.forms.delete_log, ["POST"]),
-    ("/import", "import", handlers.migrations.import_logs, ["GET"]),
+    ("/import", "import", handlers.migrations.import_page, ["GET"]),
+    ("/forms/import", "forms_import", handlers.migrations.import_logs, ["POST"]),
 ]
 
-routes.extend(auth_routes)
+for additional_routes in [
+    auth_routes,
+]:
+    routes.extend(additional_routes)
 
 for path, endpoint, handler, methods in routes:
     app.add_url_rule(path, endpoint, handler, methods=methods)

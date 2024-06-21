@@ -6,7 +6,9 @@
 <div class="container-lg">
     <h1>Import</h1>
 
-    <form>
+    <form
+        method="POST"
+        action="{{url_for('forms_import')}}">
         <div class="mb-3">
             <label for="import-data" class="form-label">Import Data</label>
             <textarea id="import-data"

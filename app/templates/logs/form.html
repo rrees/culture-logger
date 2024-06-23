@@ -63,9 +63,7 @@
 	<input type="checkbox" id="bechdel-test" name="bechdel_test" value="true" {% if log and log.bechdel_test %}checked{% endif %}>
 </div>
 
-<div class="mb-3"
-	x-show="category === 'Film'"
-	>
+<div class="mb-3">
 	<label for="violence-against-women" class="form-label me-3">Uses violence against women as a plot device?</label>
 	<input type="checkbox" id="violence-against-women" name="violence_against_women" value="true" {% if log and log.violence_against_women %}checked{% endif %}>
 </div>

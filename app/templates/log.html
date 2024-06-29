@@ -32,6 +32,14 @@
     {{ log_entry.content | markdown | safe}}
     {% endif %}
 
+    {% if log_entry.tags %}
+    <ul>
+        {% for tag in log_entry.tags %}
+        <li>{{tag}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     {% if log_entry.url %}
     <p>URL: <a href="{{log_entry.url}}">{{log_entry.url}}</a></p>
     {% endif %}

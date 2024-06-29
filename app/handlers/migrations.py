@@ -18,5 +18,13 @@ def import_logs():
             flask.abort(400, "A log exists without a title")
         title = log.pop("title")
 
+        tags_string = ",".join(log.get("tags", []))
+
+        log["tags"] = tags_string
+
+        rating = log["rating"]
+        if isinstance(rating, int):
+            log["rating"] = str(rating)
+
         logs.add(title, **log)
     return flask.redirect(flask.url_for("logs"))

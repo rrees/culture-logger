@@ -31,7 +31,7 @@ def add(
 
     tags = process_tags(tags)
 
-    if rating or len(rating.strip()) < 1:
+    if rating != None and len(rating.strip()) < 1:
         rating = None
 
     if not event_date:

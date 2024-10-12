@@ -4,7 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-sqlalchemy = "*"
 yoyo-migrations = "*"
 bpython = "*"
 
@@ -14,9 +13,8 @@ redis = "*"
 Flask = "*"
 Flask-SSLify = "*"
 wtforms = "*"
-psycopg2-binary = "*"
 mistune = "*"
 psycopg = {extras = ["binary"], version = "*"}
 
 [requires]
-python_version = "3.11"
+python_version = "3.13"

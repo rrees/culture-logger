@@ -6,4 +6,9 @@
 <div class="container-lg">
     <h1>Home</h1>
 </div>
+
+<div class="container-lg">
+{% set logged = recent_log_entries %}
+{% include "logs/list.html" %}
+</div>
 {% endblock %}

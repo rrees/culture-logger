@@ -104,3 +104,7 @@ def delete(log_id):
         with conn.cursor() as cursor:
             with conn.transaction():
                 cursor.execute(sql.logs.DELETE, {"log_id": log_id})
+
+
+def recent():
+    return read(sql.logs.RECENT, {}, models.LogRecord)

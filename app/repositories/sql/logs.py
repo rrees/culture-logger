@@ -42,3 +42,8 @@ UPDATE = """UPDATE culture_log
 SET ({}) = ({})
 WHERE id = %(log_id)s
 RETURNING id"""
+
+RECENT = """SELECT *
+FROM culture_log
+ORDER BY event_date DESC
+LIMIT 10"""

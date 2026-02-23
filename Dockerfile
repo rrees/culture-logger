@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.13.0
+ARG PYTHON_VERSION=3.14.1
 
 FROM python:${PYTHON_VERSION} AS builder
 
@@ -17,7 +17,7 @@ FROM python:${PYTHON_VERSION}-slim-bookworm
 
 ENV PYTHONUNBUFFERED=1
 
-RUN apt update && apt upgrade 
+RUN apt update && apt upgrade -y
 
 WORKDIR /app
 COPY --from=builder /app .
